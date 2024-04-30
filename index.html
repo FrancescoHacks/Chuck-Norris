@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+<h1>CHUCK NORRIS API</h1>
+
+<select name="categories" id="categories">
+    <option value="null">- Seleziona una categoria -</option>
+        <option value="animal">animal</option>
+        <option value="carrer">carrer</option>
+        <option value="celebrity">celebrity</option>
+        <option value="dev">dev</option>
+        <option value="explicit">explicit</option>
+        <option value="fashion">fashion</option>
+        <option value="food">food</option>
+        <option value="history">history</option>
+        <option value="money">money</option>
+        <option value="movie">movie</option>
+        <option value="music">music</option>
+        <option value="political">political</option>
+        <option value="religion">religion</option>
+        <option value="science">science</option>
+        <option value="sport">sport</option>
+        <option value="travel">travel</option>
+    </select>
+<br>
+<br>
+<a class="api" href="#"><button>
+  Submit
+</button></a>
+<br>
+<br>
+<br>
+<div id="value"></div>
+
+<script>
+    let btn = document.querySelector(".api")
+
+    let link = "https://api.chucknorris.io/jokes/random?category="
+
+    btn.addEventListener("click", function(event){
+    let category = document.querySelector("#categories").value
+        event.preventDefault()     
+                fetch(link + category).then(function(resp){
+                    return resp.json()
+                }).then(function(data){
+                    document.querySelector("#value").innerHTML = data.value
+                })
+            })
+</script>
+</body>
+</html>
